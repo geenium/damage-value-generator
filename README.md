@@ -5,6 +5,7 @@
 <p><a href = "https://github.com/geenium/damage-value-generator/blob/master/changes_list.txt" target = "_blank">List of changes made</a></p>
 <p>Tool: <select id = 'durability' onchange = 'durabilityInfo()'>
   <option value = "385">Bow</option>
+  <option value = "26">Carrot on a Stick</option>
   <option value = "1562">Diamond Tool</option>
   <option value = "65">Fishing Rod</option>
   <option value = "65">Flint &amp; Steel</option>
