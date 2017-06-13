@@ -8,7 +8,7 @@
   <option value = "26">Carrot on a Stick</option>
   <option value = "1562">Diamond Tool</option>
   <option value = "65">Fishing Rod</option>
-  <option value = "65">Flint &amp; Steel</option>
+  <option value = "-65">Flint &amp; Steel</option>
   <option value = "33">Golden Tool</option>
   <option value = "251">Iron Tool</option>
   <option value = "238">Shears</option>
