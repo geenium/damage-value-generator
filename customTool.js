@@ -35,6 +35,9 @@ function durabilityInfo(){
 		case "60":
 			dTex = "item/wooden_hoe";
 			break;
+		case "26":
+			dTex = "item/carrot_on_a_stick";
+			break;
 	}
 	document.getElementById("address").value = dTex;
 }
