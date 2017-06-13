@@ -65,7 +65,7 @@ function generate(){ //calculate all percentages
 	inc = "";
 	for (var i = 0; i <= maxModels && i < maxDur; i++){ // Checks both max amount of models and max durability so no models are only produed for durability values between 0 and 1.
 		if(document.getElementById("inc").checked && i > 0){ inc = i;} // Rising number after model now on all models except 'damage: 0' and 'damaged: 1'
-		j = (1/maxDur)*i;
+		j = Math.round(((1/maxDur)*i) * 10**15) / 10**15; // Should remove most floating point errors, by limiting numbers to 15 decimal places
 
         if (j > 0) {
             resultant += '{ "predicate": { "damaged": ' + damaged + ', "damage": ' + j + ' }, "model": "' + address + inc + '" },\n'; // Added spaces between the { } and predicate values
