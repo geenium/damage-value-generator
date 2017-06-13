@@ -29,4 +29,3 @@
   <input type = 'text' id = 'modelLimit' value = '384'/>
   <p><input type = 'button' value = 'Generate Code' id = 'generate' onclick = 'generate()'/></p>
   <textarea readonly id = 'result' class = 'hidden'></textarea>
-</body>
