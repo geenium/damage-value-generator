@@ -18,7 +18,7 @@ function durabilityInfo(){
 			dTex = "item/diamond_hoe";
 			break;
 		case "65":
-			dTex = "item/fishing_rod_uncast"; //fishing rod and fint and steel have the same durability, just went for fishing rod as default.
+			dTex = "item/fishing_rod"; //fishing rod and fint and steel have the same durability, just went for fishing rod as default.
 			break;
 		case "33":
 			dTex = "item/golden_hoe";
@@ -76,6 +76,8 @@ function generate(){ //calculate all percentages
         address = address.replace(/item/, "items"); // Changed default texture path from item to items.
         address = address.replace(/en_/, "_"); // Changes texture path from golden_hoe to gold_hoe and wooden_hoe to wood_hoe.
         address = address.replace(/bow/, "bow_standby"); // Changes texture path from bow to bow_standby.
+        address = address.replace(/rod/, "rod_uncast"); // Changes texture path from fishing_rod to fishing_rod_uncast.
+
 		//generate a model file's JSON around the results.
 		resultant = resultant.replace(/\n/g, '\n\t\t'); //tab indent the code by 2
         resultant = resultant.replace(/{}/, "");
