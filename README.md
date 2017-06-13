@@ -5,7 +5,7 @@
 <body>
   <p>Damage Value Model Generator</p>
   <p>Originally made by Sparks - <a href = "http://accidentalgames.com/media/durabilityModels.php">original</a>.</p>
-  <p><a href = "https://github.com/geenium/damage-value-generator/blob/master/changes_list.txt">List of changes made</a></p>
+  <p><a href = "https://github.com/geenium/damage-value-generator/blob/master/changes_list.txt" target = "_blank">List of changes made</a></p>
   <p>Tool: <select id = 'durability' onchange = 'durabilityInfo()'>
     <option value = "385">Bow</option>
     <option value = "1562">Diamond Tool</option>
