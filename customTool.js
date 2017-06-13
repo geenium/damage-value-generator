@@ -6,8 +6,9 @@ function durabilityInfo(){
         document.getElementById("modelLimit").value = 1561; // Sets the default model limit to 1 less than the default durability for custom durability amount
 	}
 	else{ //existing tool
-		document.getElementById("durabilityInfo").innerHTML = 'Your selected tool has a durability of ' + durability + '.';
-        document.getElementById("modelLimit").value = durability - 1;
+        // Flint and steel uses a negative number as fishing rods have the same durability, so Math.abs is used
+		document.getElementById("durabilityInfo").innerHTML = 'Your selected tool has a durability of ' + Math.abs(durability) + '.';
+        document.getElementById("modelLimit").value = Math.abs(durability) - 1;
 	}
 	dTex = "item/diamond_hoe"; //if no default paths can match, default to diamond_hoe.
 	switch(durability){
@@ -20,6 +21,9 @@ function durabilityInfo(){
 		case "65":
 			dTex = "item/fishing_rod"; //fishing rod and fint and steel have the same durability, just went for fishing rod as default.
 			break;
+        case "-65":
+    		dTex = "item/flint_and_steel"; // Negative value allows both flint_and_steel and fishing rods to have default textures and models
+    		break;
 		case "33":
 			dTex = "item/golden_hoe";
 			break;
@@ -46,7 +50,7 @@ function generate(){ //calculate all percentages
 	var resultant = "";
 	document.getElementById("generate").value = "Generating...";
 	document.getElementById("result").innerHTML = ""; //clear any previous outputs
-	maxDur = document.getElementById("durability").value; //durability
+	maxDur = Math.abs(document.getElementById("durability").value); //durability Math.abs allows flint_and_steel to be a chosen
     maxModels = document.getElementById("modelLimit").value;
 	address = document.getElementById("address").value; //default model address
 	if(document.getElementById("unbreakable").checked){
