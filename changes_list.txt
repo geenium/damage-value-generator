@@ -1,0 +1,13 @@
+Changed default texture path from item to items
+
+Changed bow default model to bow - from bow_standby
+Changed fishing rod default model to fishing_rod - from fishing_rod_uncast
+Changed gold tool default model to golden_hoe - from gold_hoe
+Changed wood tool default model to wooden_hoe - from wood_hoe
+
+Changed undamaged predicate to { "damage": 0 } - from {"damaged": 0, "damage": 0}
+Changed final damaged predicate to { "damaged": 1 } - from {"damaged": 1, "damage": 0}
+
+Changed rising number after model to start at 1 - originally started at 0
+
+Added max model overrides limit
