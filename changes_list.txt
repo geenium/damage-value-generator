@@ -11,3 +11,7 @@ Changed final damaged predicate to { "damaged": 1 } - from {"damaged": 1, "damag
 Changed rising number after model to start at 1 - originally started at 0
 
 Added max model overrides limit
+
+Added carrot_on_a_stick model
+
+Changed flint_and_steel to allow the use of flint_and_steel as a default model placeholder
