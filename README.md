@@ -24,7 +24,7 @@
   <p><input type ='checkbox' id = 'model' checked = 'checked'/> Generate model file around result.</p>
   <p><input type ='checkbox' id = 'inc' checked = 'checked'/> Add rising number after model placeholder.<span class = 'info'>(e.g. diamond_hoe1, diamond_hoe2, diamond_hoe3...)</span></p>
   <p>Default/placeholder model address:<br>
-  <input type = 'text' id = 'address' value = 'item/bow_standby'/>
+  <input type = 'text' id = 'address' value = 'item/bow'/>
     <p>Max no. of models overrides to produce (excludes 0 damage):<br>
   <input type = 'text' id = 'modelLimit' value = '384'/>
   <p><input type = 'button' value = 'Generate Code' id = 'generate' onclick = 'generate()'/></p>
