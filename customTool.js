@@ -20,54 +20,56 @@ function durabilityInfo(){
 	switch(durability){
 		case "385":
 			dTex = "item/bow";
-            parent += 'generated",';
-            display = '\n\t"display": {\n\t\t"thirdperson_righthand": {\n\t\t\t"rotation": [ -80, 260, -40 ],\n\t\t\t"translation": [ -1, -2, 2.5 ],\n\t\t\t"scale": [ 0.9, 0.9, 0.9 ]\n\t\t},\n\t\t"thirdperson_lefthand": {\n\t\t\t"rotation": [ -80, -280, 40 ],\n\t\t\t"translation": [ -1, -2, 2.5 ],\n\t\t\t"scale": [ 0.9, 0.9, 0.9 ]\n\t\t},\n\t\t"firstperson_righthand": {\n\t\t\t"rotation": [ 0, -90, 25 ],\n\t\t\t"translation": [ 1.13, 3.2, 1.13],\n\t\t\t"scale": [ 0.68, 0.68, 0.68 ]\n\t\t},\n\t\t"firstperson_lefthand": {\n\t\t\t"rotation": [ 0, 90, -25 ],\n\t\t\t"translation": [ 1.13, 3.2, 1.13],\n\t\t\t"scale": [ 0.68, 0.68, 0.68 ]\n\t\t}\n\t},';
+			parent += 'generated",';
+			display = '\n\t"display": {\n\t\t"thirdperson_righthand": {\n\t\t\t"rotation": [ -80, 260, -40 ],\n\t\t\t"translation": [ -1, -2, 2.5 ],\n\t\t\t"scale": [ 0.9, 0.9, 0.9 ]\n\t\t},\n\t\t"thirdperson_lefthand": {\n\t\t\t"rotation": [ -80, -280, 40 ],\n\t\t\t"translation": [ -1, -2, 2.5 ],\n\t\t\t"scale": [ 0.9, 0.9, 0.9 ]\n\t\t},\n\t\t"firstperson_righthand": {\n\t\t\t"rotation": [ 0, -90, 25 ],\n\t\t\t"translation": [ 1.13, 3.2, 1.13],\n\t\t\t"scale": [ 0.68, 0.68, 0.68 ]\n\t\t},\n\t\t"firstperson_lefthand": {\n\t\t\t"rotation": [ 0, 90, -25 ],\n\t\t\t"translation": [ 1.13, 3.2, 1.13],\n\t\t\t"scale": [ 0.68, 0.68, 0.68 ]\n\t\t}\n\t},';
 			break;
 		case "1562":
 			dTex = "item/diamond_hoe";
-            parent += 'handheld",';
+			parent += 'handheld",';
 			break;
 		case "65":
 			dTex = "item/fishing_rod"; //fishing rod and fint and steel have the same durability, just went for fishing rod as default.
-            parent += 'handheld_rod",';
+			parent += 'handheld_rod",';
 			break;
-        case "-65":
-    		dTex = "item/flint_and_steel"; // Negative value allows both flint_and_steel and fishing rods to have default textures and models
-            parent += 'generated",';
-    		break;
+        	case "-65":
+			dTex = "item/flint_and_steel"; // Negative value allows both flint_and_steel and fishing rods to have default textures and models
+			parent += 'generated",';
+			break;
 		case "33":
 			dTex = "item/golden_hoe";
-            parent += 'handheld",';
+			parent += 'handheld",';
 			break;
 		case "251":
 			dTex = "item/iron_hoe";
-            parent += 'handheld",';
+			parent += 'handheld",';
 			break;
 		case "238":
 			dTex = "item/shears";
-            parent += 'generated",';
+			parent += 'generated",';
 			break;
 		case "132":
 			dTex = "item/stone_hoe";
-            parent += 'handheld",';
+			parent += 'handheld",';
 			break;
 		case "60":
 			dTex = "item/wooden_hoe";
-            parent += 'handheld",';
+			parent += 'handheld",';
 			break;
 		case "26":
 			dTex = "item/carrot_on_a_stick";
-            parent += 'handheld_rod",';
+			parent += 'handheld_rod",';
 			break;
-        case "433":
-    		dTex = "item/elytra";
-            parent += 'generated",';
-    		break;
-        case "337":
-    		dTex = "item/shield";
-            parent = '\n\t"parent": "builtin/entity",'; // Completely replaces 'parent' as shields use a builtin parent by default
-            display = '\n\t"display": {\n\t\t"thirdperson_righthand": {\n\t\t\t"rotation": [ 0, 90, 0 ],\n\t\t\t"translation": [ 10.51, 6, -4 ],\n\t\t\},\n\t\t"thirdperson_lefthand": {\n\t\t\t"rotation": [ 0, 90, 0 ],\n\t\t\t"translation": [ 10.51, 6, 12 ],\n\t\t},\n\t\t"firstperson_righthand": {\n\t\t\t"rotation": [ 0, 180, 5 ],\n\t\t\t"translation": [ -10, 2, -10 ],\n\t\t\t"scale": [ 1.25, 1.25, 1.25 ]\n\t\t},\n\t\t"firstperson_lefthand": {\n\t\t\t"rotation": [ 0, 180, 5 ],\n\t\t\t"translation": [ 10, 0, -10 ],\n\t\t\t"scale": [ 1.25, 1.25, 1.25 ]\n\t\t},\n\t\t"gui": {\n\t\t\t"rotation": [ 15, -25, -5 ],\n\t\t\t"translation": [ 2, 3, 0 ],\n\t\t\t"scale": [ 0.65, 0.65, 0.65 ]\n\t\t},\n\t\t"fixed": {\n\t\t\t"rotation": [ 0, 180, 0 ],\n\t\t\t"translation": [ -2, 4, -5],\n\t\t\t"scale":[ 0.5, 0.5, 0.5]\n\t\t},\n\t\t"ground": {\n\t\t\t"translation": [ 4, 4, 2],\n\t\t\t"scale":[ 0.25, 0.25, 0.25]\n\t\t}\n\t},';
-    		break;
+		case "433":
+			dTex = "item/elytra";
+			parent += 'generated",';
+			break;
+		case "337":
+			dTex = "item/shield";
+			parent = '\n\t"parent": "builtin/entity",'; // Completely replaces 'parent' as shields use a builtin parent by default
+			display = '\n\t"display": {\n\t\t"thirdperson_righthand": {\n\t\t\t"rotation": [ 0, 90, 0 ],\n\t\t\t"translation": [ 10.51, 6, -4 ],\n\t\t\},\n\t\t"thirdperson_lefthand": {\n\t\t\t"rotation": [ 0, 90, 0 ],\n\t\t\t"translation": [ 10.51, 6, 12 ],\n\t\t},\n\t\t"firstperson_righthand": {\n\t\t\t"rotation": [ 0, 180, 5 ],\n\t\t\t"translation": [ -10, 2, -10 ],\n\t\t\t"scale": [ 1.25, 1.25, 1.25 ]\n\t\t},\n\t\t"firstperson_lefthand": {\n\t\t\t"rotation": [ 0, 180, 5 ],\n\t\t\t"translation": [ 10, 0, -10 ],\n\t\t\t"scale": [ 1.25, 1.25, 1.25 ]\n\t\t},\n\t\t"gui": {\n\t\t\t"rotation": [ 15, -25, -5 ],\n\t\t\t"translation": [ 2, 3, 0 ],\n\t\t\t"scale": [ 0.65, 0.65, 0.65 ]\n\t\t},\n\t\t"fixed": {\n\t\t\t"rotation": [ 0, 180, 0 ],\n\t\t\t"translation": [ -2, 4, -5],\n\t\t\t"scale":[ 0.5, 0.5, 0.5]\n\t\t},\n\t\t"ground": {\n\t\t\t"translation": [ 4, 4, 2],\n\t\t\t"scale":[ 0.25, 0.25, 0.25]\n\t\t}\n\t},';
+			break;
+		default:
+			parent += 'generated",';
 	}
 	document.getElementById("address").value = dTex;
 }
@@ -77,7 +79,7 @@ function generate(){ //calculate all percentages
 	document.getElementById("generate").value = "Generating...";
 	document.getElementById("result").innerHTML = ""; //clear any previous outputs
 	maxDur = Math.abs(document.getElementById("durability").value); //Math.abs allows flint_and_steel to be chosen
-    maxModels = document.getElementById("modelLimit").value;
+	maxModels = document.getElementById("modelLimit").value;
 	address = document.getElementById("address").value; //default model address
 	if(document.getElementById("unbreakable").checked){
 		damaged = 0;
