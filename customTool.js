@@ -108,14 +108,14 @@ function generate(){ //calculate all percentages
 	}
 	resultant = resultant.substring(0, resultant.length - 2); //remove the last comma from the string.
 	if(document.getElementById("model").checked){
-        address = address.replace(/item/, "items"); // Changed default texture path from item to items.
-        address = address.replace(/en_/, "_"); // Changes texture path from golden_hoe to gold_hoe and wooden_hoe to wood_hoe.
-        address = address.replace(/bow/, "bow_standby"); // Changes texture path from bow to bow_standby.
-        address = address.replace(/rod/, "rod_uncast"); // Changes texture path from fishing_rod to fishing_rod_uncast.
+		address = address.replace(/item/, "items"); // Changed default texture path from item to items.
+		address = address.replace(/en_/, "_"); // Changes texture path from golden_hoe to gold_hoe and wooden_hoe to wood_hoe.
+		address = address.replace(/bow/, "bow_standby"); // Changes texture path from bow to bow_standby.
+		address = address.replace(/rod/, "rod_uncast"); // Changes texture path from fishing_rod to fishing_rod_uncast.
 
 		//generate a model file's JSON around the results.
 		resultant = resultant.replace(/\n/g, '\n\t\t'); //tab indent the code by 2
-        resultant = resultant.replace(/{}/, "");
+		resultant = resultant.replace(/{}/, "");
 		resultant = '{' + parent + display + '\n\t"textures": {\n\t\t"layer0": "' + address + '"\n\t},\n\t"overrides": [\n\t\t' + resultant + '\n\t]\n}'; //add prefix and suffix.
 	}
 	document.getElementById("result").innerHTML = resultant;
