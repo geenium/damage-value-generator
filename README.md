@@ -7,11 +7,13 @@
   <option value = "385">Bow</option>
   <option value = "26">Carrot on a Stick</option>
   <option value = "1562">Diamond Tool</option>
+  <option value = "433">Elytra</option>
   <option value = "65">Fishing Rod</option>
   <option value = "-65">Flint &amp; Steel</option>
   <option value = "33">Golden Tool</option>
   <option value = "251">Iron Tool</option>
   <option value = "238">Shears</option>
+  <option value = "337">Shield</option>
   <option value = "132">Stone Tool</option>
   <option value = "60">Wood Tool</option>
   <option value = "1">Other</option>
