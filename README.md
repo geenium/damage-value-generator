@@ -23,6 +23,11 @@
 <p><input type ='checkbox' id = 'unbreakable' checked = 'checked'/> Generate for "unbreakable" tools.</p>
 <p><input type ='checkbox' id = 'model' checked = 'checked'/> Generate model file around result.</p>
 <p><input type ='checkbox' id = 'inc' checked = 'checked'/> Add rising number after model placeholder.<span class = 'info'>(e.g. diamond_hoe1, diamond_hoe2, diamond_hoe3...)</span></p>
+<p id = 'elytraBroken' hidden = 'true'><input type ='checkbox' id = 'elytraBrokenCheck'/> Create a predicate for when the elytra is broken.</p>
+<p id = 'shieldBlock' hidden = 'true'><input type ='checkbox' id = 'shieldBlockCheck'/> Add a blocking model for each durability.</p>
+<p class = 'bowPulling'><input type ='checkbox' id = 'bowPullingCheck' checked = 'checked'/> Add pulling predicates for each durability.</p>
+<p class = 'bowPulling'>No. of pulling states to have for each bow durability (will always produce at least 1):<br>
+<input type = "text" value = '3' class = 'bowPulling' id = 'bowPullingNum'/></p>
 <p>Default/placeholder model address:<br>
 <input type = 'text' id = 'address' value = 'item/bow'/>
   <p>Max no. of models to produce (excludes 0 damage):<br>
