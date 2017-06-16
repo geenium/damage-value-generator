@@ -21,3 +21,6 @@ Changed flint_and_steel to allow the use of flint_and_steel as a default model p
 Changed parent to be the default value for each model
 
 Added display settings for bow and shield from default models
+
+Added optional model for broken elytra
+Added optional pull states for bows
