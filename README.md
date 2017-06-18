@@ -16,11 +16,13 @@
   <option value = "337">Shield</option>
   <option value = "132">Stone Tool</option>
   <option value = "60">Wood Tool</option>
+  <option value = "2">Clock</option>
+  <option value = "3">Compass</option>
   <option value = "1">Other</option>
 </select>
 <span class ='info'>Choose "other" for custom durability</span></p>
 <div id = 'durabilityInfo'>Your selected tool has a durability of 385.</div>
-<p><input type ='checkbox' id = 'unbreakable' checked = 'checked'/> Generate for "unbreakable" tools.</p>
+<p id = 'unbreakableHide'><input type ='checkbox' id = 'unbreakable' checked = 'checked'/> Generate for "unbreakable" tools.</p>
 <p><input type ='checkbox' id = 'model' checked = 'checked'/> Generate model file around result.</p>
 <p><input type ='checkbox' id = 'inc' checked = 'checked'/> Add rising number after model placeholder.<span class = 'info'>(e.g. diamond_hoe1, diamond_hoe2, diamond_hoe3...)</span></p>
 <p id = 'elytraBroken' hidden = 'true'><input type ='checkbox' id = 'elytraBrokenCheck'/> Create a predicate for when the elytra is broken.</p>
