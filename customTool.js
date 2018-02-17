@@ -214,7 +214,7 @@ function generate() { //calculate all percentages
 		} else if (block) {
 			resultant += '{ "predicate": { "damaged": 1, "blocking": 1 }, "model": "item/shield_blocking" },\n';
 		} else if (thrown) {
-			resultant += '{ "predicate": { "damage": 1, "throwing": 1 }, "model": "item/trident_throwing" },\n';
+			resultant += '{ "predicate": { "damaged": 1, "throwing": 1 }, "model": "item/trident_throwing" },\n';
 		}
 	}
 
