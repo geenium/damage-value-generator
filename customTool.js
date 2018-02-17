@@ -2,24 +2,18 @@ var parent = '\n\t"parent": "item/generated",'; // Sets a default value for 'par
 var display = ''; // Sets a default value for 'display'
 
 // handle a selection change for tool type
-function durabilityInfo(){
+function durabilityInfo() {
 	durability = document.getElementById("durability").value; //get the value of the durability from the dropdown.
-	if(durability == 1){ // 1 means custom durability.
+	if (durability == 1) { // 1 means custom durability.
 		document.getElementById("durabilityInfo").innerHTML = 'How much maximum durability does your tool have?<br><input type = "text" value = "1562" class = "textLine" id = "customDur"/>';
 		document.getElementById("modelLimit").value = 1561; // Sets the default model limit to 1 less than the default durability for custom durability amount
-	}
-
-	else if (durability == 2) { // 2 is used for the clock
+	} else if (durability == 2) { // 2 is used for the clock
 		document.getElementById("durabilityInfo").innerHTML = 'How many clock models do you want to have?<br><input type = "text" value = "64" class = "textLine" id = "customDur"/>';
 		document.getElementById("modelLimit").value = 63; // 63 is the default number of clock models
-	}
-
-	else if (durability == 3) { // 3 is used for the compass
+	} else if (durability == 3) { // 3 is used for the compass
 		document.getElementById("durabilityInfo").innerHTML = 'How many compass models do you want to have?<br><input type = "text" value = "32" class = "textLine" id = "customDur"/>';
 		document.getElementById("modelLimit").value = 31; // 32 is the default number of compass models
-	}
-
-	else{ //existing tool
+	} else { //existing tool
 		// Flint and steel uses a negative number as fishing rods have the same durability, so Math.abs is used
 		document.getElementById("durabilityInfo").innerHTML = 'Your selected tool has a durability of ' + Math.abs(durability) + '.';
 		document.getElementById("modelLimit").value = Math.abs(durability) - 1;
@@ -40,10 +34,16 @@ function durabilityInfo(){
 		bowPulling[i].hidden = "true";
 	}
 
+	document.getElementById("newTextureNames").hidden = "true"; // Hides the checkbox used for wooden and golden tools
+	document.getElementById("newTextureNamesCheck").checked = ""; // Unchecks the checkbox for wooden and golden tools
+
+	document.getElementById("tridentThrown").hidden = "true"; // Hides the checkbox only used for tridents
+	document.getElementById("tridentThrownCheck").checked = ""; // Unchecks the checkbox for tridents
+
 	display = '';
 	parent = '\n\t"parent": "item/'; // Sets the parent value ready for another model to be added to the end
 	dTex = "item/diamond_hoe"; //if no default paths can match, default to diamond_hoe.
-	switch(durability){
+	switch (durability) {
 		case "385":
 			dTex = "item/bow";
 			parent += 'generated",';
@@ -69,10 +69,18 @@ function durabilityInfo(){
 		case "33":
 			dTex = "item/golden_hoe";
 			parent += 'handheld",';
+			document.getElementById("newTextureNames").hidden = ""; // Shows the checkbox used for golden tools
 			break;
 		case "251":
 			dTex = "item/iron_hoe";
 			parent += 'handheld",';
+			break;
+		case "-251":
+			dTex = "item/trident";
+			parent = '\n\t"parent": "builtin/entity",'; // Completely replaces 'parent' as shields use a builtin parent by default
+			display = '\n\t"display": {\n\t\t"thirdperson_righthand": {\n\t\t\t"rotation": [ 0, 60, 0 ],\n\t\t\t"translation": [ 11, 17, -2 ]\n\t\t},\n\t\t"thirdperson_lefthand": {\n\t\t\t"rotation": [ 0, 60, 0 ],\n\t\t\t"translation": [ 3, 17, 12 ]\n\t\t},\n\t\t"firstperson_righthand": {\n\t\t\t"rotation": [ 0, -90, 25 ],\n\t\t\t"translation": [ -3, 17, 1 ]\n\t\t},\n\t\t"firstperson_lefthand": {\n\t\t\t"rotation": [ 0, 90, -25 ],\n\t\t\t"translation": [ 13, 17, 1 ]\n\t\t},\n\t\t"gui": {\n\t\t\t"rotation": [ 15, -25, -5 ],\n\t\t\t"translation": [ 2, 3, 0 ],\n\t\t\t"scale": [ 0.65, 0.65, 0.65 ]\n\t\t},\n\t\t"fixed": {\n\t\t\t"rotation": [ 0, 180, 0 ],\n\t\t\t"translation": [ -2, 4, -5],\n\t\t\t"scale":[ 0.5, 0.5, 0.5]\n\t\t},\n\t\t"ground": {\n\t\t\t"translation": [ 4, 4, 2],\n\t\t\t"scale":[ 0.25, 0.25, 0.25]\n\t\t}\n\t},';
+			document.getElementById("tridentThrown").hidden = ""; // Shows the trident checkbox if trident is chosen
+			document.getElementById("tridentThrownCheck").checked = "checked"; // Checks the trident checkbox by default when the trident is chosen
 			break;
 		case "238":
 			dTex = "item/shears";
@@ -85,6 +93,7 @@ function durabilityInfo(){
 		case "60":
 			dTex = "item/wooden_hoe";
 			parent += 'handheld",';
+			document.getElementById("newTextureNames").hidden = ""; // Shows the checkbox used for wooden tools
 			break;
 		case "26":
 			dTex = "item/carrot_on_a_stick";
@@ -98,7 +107,7 @@ function durabilityInfo(){
 		case "337":
 			dTex = "item/shield";
 			parent = '\n\t"parent": "builtin/entity",'; // Completely replaces 'parent' as shields use a builtin parent by default
-			display = '\n\t"display": {\n\t\t"thirdperson_righthand": {\n\t\t\t"rotation": [ 0, 90, 0 ],\n\t\t\t"translation": [ 10.51, 6, -4 ]\n\t\t\},\n\t\t"thirdperson_lefthand": {\n\t\t\t"rotation": [ 0, 90, 0 ],\n\t\t\t"translation": [ 10.51, 6, 12 ]\n\t\t},\n\t\t"firstperson_righthand": {\n\t\t\t"rotation": [ 0, 180, 5 ],\n\t\t\t"translation": [ -10, 2, -10 ],\n\t\t\t"scale": [ 1.25, 1.25, 1.25 ]\n\t\t},\n\t\t"firstperson_lefthand": {\n\t\t\t"rotation": [ 0, 180, 5 ],\n\t\t\t"translation": [ 10, 0, -10 ],\n\t\t\t"scale": [ 1.25, 1.25, 1.25 ]\n\t\t},\n\t\t"gui": {\n\t\t\t"rotation": [ 15, -25, -5 ],\n\t\t\t"translation": [ 2, 3, 0 ],\n\t\t\t"scale": [ 0.65, 0.65, 0.65 ]\n\t\t},\n\t\t"fixed": {\n\t\t\t"rotation": [ 0, 180, 0 ],\n\t\t\t"translation": [ -2, 4, -5],\n\t\t\t"scale":[ 0.5, 0.5, 0.5]\n\t\t},\n\t\t"ground": {\n\t\t\t"translation": [ 4, 4, 2],\n\t\t\t"scale":[ 0.25, 0.25, 0.25]\n\t\t}\n\t},';
+			display = '\n\t"display": {\n\t\t"thirdperson_righthand": {\n\t\t\t"rotation": [ 0, 90, 0 ],\n\t\t\t"translation": [ 10.51, 6, -4 ]\n\t\t},\n\t\t"thirdperson_lefthand": {\n\t\t\t"rotation": [ 0, 90, 0 ],\n\t\t\t"translation": [ 10.51, 6, 12 ]\n\t\t},\n\t\t"firstperson_righthand": {\n\t\t\t"rotation": [ 0, 180, 5 ],\n\t\t\t"translation": [ -10, 2, -10 ],\n\t\t\t"scale": [ 1.25, 1.25, 1.25 ]\n\t\t},\n\t\t"firstperson_lefthand": {\n\t\t\t"rotation": [ 0, 180, 5 ],\n\t\t\t"translation": [ 10, 0, -10 ],\n\t\t\t"scale": [ 1.25, 1.25, 1.25 ]\n\t\t},\n\t\t"gui": {\n\t\t\t"rotation": [ 15, -25, -5 ],\n\t\t\t"translation": [ 2, 3, 0 ],\n\t\t\t"scale": [ 0.65, 0.65, 0.65 ]\n\t\t},\n\t\t"fixed": {\n\t\t\t"rotation": [ 0, 180, 0 ],\n\t\t\t"translation": [ -2, 4, -5],\n\t\t\t"scale":[ 0.5, 0.5, 0.5]\n\t\t},\n\t\t"ground": {\n\t\t\t"translation": [ 4, 4, 2],\n\t\t\t"scale":[ 0.25, 0.25, 0.25]\n\t\t}\n\t},';
 			document.getElementById("shieldBlock").hidden = ""; // Shows the shield checkbox if shield is chosen
 			document.getElementById("shieldBlockCheck").checked = "checked"; // Checks the shield checkbox by default when the shield is chosen
 			break;
@@ -118,7 +127,7 @@ function durabilityInfo(){
 	document.getElementById("address").value = dTex;
 }
 
-function generate(){ //calculate all percentages
+function generate() { //calculate all percentages
 	var resultant = "";
 	document.getElementById("generate").value = "Generating...";
 	document.getElementById("result").innerHTML = ""; //clear any previous outputs
@@ -127,7 +136,7 @@ function generate(){ //calculate all percentages
 	address = document.getElementById("address").value; //default model address
 	predicateKey = '"damage": '; // Sets the default predicate to "damage"
 	var compassClock = document.getElementById("unbreakableHide").hidden;
-	if(document.getElementById("unbreakable").checked){
+	if (document.getElementById("unbreakable").checked) {
 		damaged = '"damaged": 0, ';
 	}
 
@@ -138,16 +147,13 @@ function generate(){ //calculate all percentages
 
 		if (maxDur == 2) { //Sets the predicate to "time" rather than "damage" if clocks is chosen
 			predicateKey = '"time": ';
-		}
-		else {
+		} else {
 			predicateKey = '"angle": ';
 		}
-	}
-
-	else{
+	} else {
 		damaged = '"damaged": 1, ';
 	}
-	if(maxDur == 1 || compassClock){
+	if (maxDur == 1 || compassClock) {
 		maxDur = document.getElementById("customDur").value; //update durability from 1 if a custom durability was entered.
 	}
 	inc = "";
@@ -157,13 +163,16 @@ function generate(){ //calculate all percentages
 	var pullPercent;
 
 	var block = document.getElementById("shieldBlockCheck").checked;
+	var thrown = document.getElementById("tridentThrownCheck").checked;
 
-	for (var i = 0; i <= maxModels && i < maxDur; i++){ // Checks both max amount of models and max durability so no models are only produed for durability values between 0 and 1.
-		if(document.getElementById("inc").checked && i > 0){ inc = i;} // Rising number after model now on all models except 'damage: 0' and 'damaged: 1'
-		j = Math.round(((1/maxDur)*i) * 10**15) / 10**15; // Limits the durability to 15 decimal places
+	for (var i = 0; i <= maxModels && i < maxDur; i++) { // Checks both max amount of models and max durability so no models are only produed for durability values between 0 and 1.
+		if (document.getElementById("inc").checked && i > 0) {
+			inc = i;
+		} // Rising number after model now on all models except 'damage: 0' and 'damaged: 1'
+		j = Math.round(((1 / maxDur) * i) * 10 ** 15) / 10 ** 15; // Limits the durability to 15 decimal places
 
 		if (j > 0) {
-			resultant += '{ "predicate": { ' + damaged + predicateKey  + j + ' }, "model": "' + address + inc + '" },\n'; // Added spaces between the { } and predicate values
+			resultant += '{ "predicate": { ' + damaged + predicateKey + j + ' }, "model": "' + address + inc + '" },\n'; // Added spaces between the { } and predicate values
 			// Adds pulling predicates if the checkbox was checked
 			if (pull) {
 				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ' "pulling": 1 }, "model": item/bow_pulling' + inc + '_1" },\n';
@@ -171,14 +180,12 @@ function generate(){ //calculate all percentages
 					pullPercent = (1 / pullNum) * k;
 					resultant += '{ "predicate": { ' + damaged + predicateKey + j + ' "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
 				}
-			}
-
-			else if (block) {
+			} else if (block) {
 				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "blocking": 1 }, "model": "' + address + "_blocking" + inc + '" },\n';
+			} else if (thrown) {
+				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "throwing": 1 }, "model": "' + address + "_throwing" + inc + '" },\n';
 			}
-		}
-
-		else {
+		} else {
 			resultant += '{ "predicate": { ' + predicateKey + j + ' }, "model": "' + address + inc + '" },\n'; // If damage = 0, damaged predicate is unnecessary
 			// Adds pulling predicates if the checkbox was checked
 			if (pull) {
@@ -187,15 +194,15 @@ function generate(){ //calculate all percentages
 					pullPercent = (1 / pullNum) * k;
 					resultant += '{ "predicate": { "damage": ' + j + ' "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
 				}
-			}
-
-			else if (block) {
+			} else if (block) {
 				resultant += '{ "predicate": { "damage": ' + j + ', "blocking": 1 }, "model": "' + address + "_blocking" + inc + '" },\n';
+			} else if (thrown) {
+				resultant += '{ "predicate": { "damage": ' + j + ', "throwing": 1 }, "model": "' + address + "_throwing" + inc + '" },\n';
 			}
 		}
 	}
 
-	if(document.getElementById("unbreakable").checked && !compassClock){
+	if (document.getElementById("unbreakable").checked && !compassClock) {
 		resultant += '{ "predicate": { "damaged": 1 }, "model": "' + address + '" },\n'; // Removed the unnecessary "damage": 0
 		// Adds pulling predicates if the checkbox was checked
 		if (pull) {
@@ -212,9 +219,11 @@ function generate(){ //calculate all percentages
 	}
 
 	resultant = resultant.substring(0, resultant.length - 2); //remove the last comma from the string.
-	if(document.getElementById("model").checked){
+	if (document.getElementById("model").checked) {
 		address = address.replace(/item/, "items"); // Changed default texture path from item to items.
-		address = address.replace(/en_/, "_"); // Changes texture path from golden_hoe to gold_hoe and wooden_hoe to wood_hoe.
+		if (!document.getElementById("newTextureNamesCheck").checked) {
+			address = address.replace(/en_/, "_"); // Changes texture path from golden_hoe to gold_hoe and wooden_hoe to wood_hoe if new textures isn't checked.
+		}
 		address = address.replace(/bow/, "bow_standby"); // Changes texture path from bow to bow_standby.
 		address = address.replace(/rod/, "rod_uncast"); // Changes texture path from fishing_rod to fishing_rod_uncast.
 
