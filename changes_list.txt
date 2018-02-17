@@ -5,6 +5,8 @@ Changed fishing rod default model to fishing_rod - from fishing_rod_uncast
 Changed gold tool default model to golden_hoe - from gold_hoe
 Changed wood tool default model to wooden_hoe - from wood_hoe
 
+Added option to use 1.13 texture names for wooden and golden tools
+
 Changed undamaged predicate to { "damage": 0 } - from {"damaged": 0, "damage": 0}
 Changed final damaged predicate to { "damaged": 1 } - from {"damaged": 1, "damage": 0}
 
@@ -15,6 +17,7 @@ Added max model overrides limit
 Added carrot_on_a_stick model
 Added elytra model
 Added shield model
+Added trident model
 
 Changed flint_and_steel to allow the use of flint_and_steel as a default model placeholder
 
@@ -25,6 +28,7 @@ Added display settings for bow and shield from default models
 Added optional model for broken elytra
 Added optional pull states for bows
 Added optional blocking state for shields
+Added optional throwing state for tridents
 
 Added clock option
 Added compass option
