@@ -17,7 +17,7 @@ Added max model overrides limit
 Added carrot_on_a_stick model
 Added elytra model
 Added shield model
-Added trident model
+Added trident model - with optional throwing state
 
 Changed flint_and_steel to allow the use of flint_and_steel as a default model placeholder
 
@@ -28,7 +28,6 @@ Added display settings for bow and shield from default models
 Added optional model for broken elytra
 Added optional pull states for bows
 Added optional blocking state for shields
-Added optional throwing state for tridents
 
 Added clock option
 Added compass option
