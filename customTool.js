@@ -234,7 +234,11 @@ function generate() { //calculate all percentages
 		//generate a model file's JSON around the results.
 		resultant = resultant.replace(/\n/g, '\n\t\t'); //tab indent the code by 2
 		resultant = resultant.replace(/{}/, "");
-		resultant = '{' + parent + display + '\n\t"textures": {\n\t\t"layer0": "' + address + '"\n\t},\n\t"overrides": [\n\t\t' + resultant + '\n\t]\n}'; //add prefix and suffix.
+
+		var model = address.split("/")[1];
+		var texture = (model == "shield" || model == "trident") ? '' : '\n\t"textures": {\n\t\t"layer0": "' + address + '"\n\t},';
+
+		resultant = '{' + parent + display + texture + '\n\t"overrides": [\n\t\t' + resultant + '\n\t]\n}'; //add prefix and suffix.
 	}
 	document.getElementById("result").innerHTML = resultant;
 	document.getElementById("generate").value = "Generate Code";
