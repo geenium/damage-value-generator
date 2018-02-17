@@ -212,9 +212,9 @@ function generate() { //calculate all percentages
 				resultant += '{ "predicate": { "damaged": 1, "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling_' + (k + 1) + '" },\n';
 			}
 		} else if (block) {
-			resultant += '{ "predicate": { "damaged": 1, "blocking": 1 }, "model": "shield_blocking" },\n';
+			resultant += '{ "predicate": { "damaged": 1, "blocking": 1 }, "model": "item/shield_blocking" },\n';
 		} else if (thrown) {
-			resultant += '{ "predicate": { "damage": 1, "throwing": 1 }, "model": "trident_throwing" },\n';
+			resultant += '{ "predicate": { "damage": 1, "throwing": 1 }, "model": "item/trident_throwing" },\n';
 		}
 	}
 
