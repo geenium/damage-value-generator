@@ -206,11 +206,15 @@ function generate() { //calculate all percentages
 		resultant += '{ "predicate": { "damaged": 1 }, "model": "' + address + '" },\n'; // Removed the unnecessary "damage": 0
 		// Adds pulling predicates if the checkbox was checked
 		if (pull) {
-			resultant += '{ "predicate": { "damaged": 1, "pulling": 1 }, "model": item/bow_pulling_1' + '" },\n';
+			resultant += '{ "predicate": { "damaged": 1, "pulling": 1 }, "model": item/bow_pulling_1" },\n';
 			for (var k = 1; k <= pullNum; k++) {
 				pullPercent = (1 / pullNum) * k;
 				resultant += '{ "predicate": { "damaged": 1, "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling_' + (k + 1) + '" },\n';
 			}
+		} else if (block) {
+			resultant += '{ "predicate": { "damaged": 1, "blocking": 1 }, "model": "shield_blocking" },\n';
+		} else if (thrown) {
+			resultant += '{ "predicate": { "damage": 1, "throwing": 1 }, "model": "trident_throwing" },\n';
 		}
 	}
 
