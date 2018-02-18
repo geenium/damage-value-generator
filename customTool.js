@@ -44,6 +44,9 @@ function durabilityInfo() {
 	document.getElementById("tridentThrown").hidden = "true"; // Hides the checkbox only used for tridents
 	document.getElementById("tridentThrownCheck").checked = ""; // Unchecks the checkbox for tridents
 
+	document.getElementById("rodCast").hidden = "true"; // Hides the checkbox only used for tridents
+	document.getElementById("rodCastCheck").checked = ""; // Unchecks the checkbox for tridents
+
 	display = '';
 	parent = '\n\t"parent": "item/'; // Sets the parent value ready for another model to be added to the end
 	dTex = "item/diamond_hoe"; //if no default paths can match, default to diamond_hoe.
@@ -65,6 +68,8 @@ function durabilityInfo() {
 		case "65":
 			dTex = "item/fishing_rod"; //fishing rod and fint and steel have the same durability, just went for fishing rod as default.
 			parent += 'handheld_rod",';
+			document.getElementById("rodCast").hidden = ""; // Shows the fishing rod checkbox if fishing rod is chosen
+			document.getElementById("rodCastCheck").checked = "checked"; // Checks the fishing rod checkbox by default when the fishing rod is chosen
 			break;
 		case "-65":
 			dTex = "item/flint_and_steel"; // Negative value allows both flint_and_steel and fishing rods to have default textures and models
@@ -170,12 +175,22 @@ function generate() { //calculate all percentages
 
 	var block = document.getElementById("shieldBlockCheck").checked;
 	var thrown = document.getElementById("tridentThrownCheck").checked;
+	var cast = document.getElementById("rodCastCheck").checked;
 
 	for (var i = 0; i <= maxModels && i < maxDur; i++) { // Checks both max amount of models and max durability so no models are only produed for durability values between 0 and 1.
 		if (document.getElementById("inc").checked && i > 0) {
 			inc = i;
 		} // Rising number after model now on all models except 'damage: 0' and 'damaged: 1'
 		j = Math.round(((1 / maxDur) * i) * 10 ** 15) / 10 ** 15; // Limits the durability to 15 decimal places
+
+		var extra;
+		if (block) {
+			extra = 'blocking'
+		} else if (thrown) {
+			extra = 'throwing'
+		} else {
+			extra = 'cast'
+		}
 
 		if (j > 0) {
 			resultant += '{ "predicate": { ' + damaged + predicateKey + j + ' }, "model": "' + address + inc + '" },\n'; // Added spaces between the { } and predicate values
@@ -186,10 +201,8 @@ function generate() { //calculate all percentages
 					pullPercent = (1 / pullNum) * k;
 					resultant += '{ "predicate": { ' + damaged + predicateKey + j + ' "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
 				}
-			} else if (block) {
-				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "blocking": 1 }, "model": "' + address + "_blocking" + inc + '" },\n';
-			} else if (thrown) {
-				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "throwing": 1 }, "model": "' + address + "_throwing" + inc + '" },\n';
+			} else if (block || thrown || cast) {
+				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "' + extra + '": 1 }, "model": "' + address + '_' + extra + inc + '" },\n';
 			}
 		} else {
 			resultant += '{ "predicate": { ' + predicateKey + j + ' }, "model": "' + address + inc + '" },\n'; // If damage = 0, damaged predicate is unnecessary
@@ -200,10 +213,8 @@ function generate() { //calculate all percentages
 					pullPercent = (1 / pullNum) * k;
 					resultant += '{ "predicate": { "damage": ' + j + ' "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
 				}
-			} else if (block) {
-				resultant += '{ "predicate": { "damage": ' + j + ', "blocking": 1 }, "model": "' + address + "_blocking" + inc + '" },\n';
-			} else if (thrown) {
-				resultant += '{ "predicate": { "damage": ' + j + ', "throwing": 1 }, "model": "' + address + "_throwing" + inc + '" },\n';
+			} else if (block || thrown || cast) {
+				resultant += '{ "predicate": { "damage": ' + j + ', "' + extra + '": 1 }, "model": "' + address + '_' + extra + inc + '" },\n';
 			}
 		}
 	}
@@ -217,10 +228,8 @@ function generate() { //calculate all percentages
 				pullPercent = (1 / pullNum) * k;
 				resultant += '{ "predicate": { "damaged": 1, "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling_' + (k + 1) + '" },\n';
 			}
-		} else if (block) {
-			resultant += '{ "predicate": { "damaged": 1, "blocking": 1 }, "model": "item/shield_blocking" },\n';
-		} else if (thrown) {
-			resultant += '{ "predicate": { "damaged": 1, "throwing": 1 }, "model": "item/trident_throwing" },\n';
+		} else if (block || thrown || cast) {
+			resultant += '{ "predicate": { "damaged": 1, "' + extra + '": 1 }, "model": "' + address + '_' + extra + '" },\n';
 		}
 	}
 
