@@ -18,6 +18,10 @@ function durabilityInfo() {
 		document.getElementById("durabilityInfo").innerHTML = 'Your selected tool has a durability of ' + Math.abs(durability) + '.';
 		document.getElementById("modelLimit").value = Math.abs(durability) - 1;
 	}
+	
+	// Sets the 'unbreakable' tools to be checked by default
+	// This is unchecked for models that don't need it
+	document.getElementById("unbreakable").checked = "checked";
 
 	document.getElementById("elytraBroken").hidden = "true"; // Hides the checkbox only used for elytra
 	document.getElementById("elytraBrokenCheck").checked = ""; // Unchecks the checkbox for elytra
@@ -115,11 +119,13 @@ function durabilityInfo() {
 			dTex = "item/clock";
 			parent += 'generated",';
 			document.getElementById("unbreakableHide").hidden = "true";
+			document.getElementById("unbreakable").checked = "";
 			break;
 		case "3":
 			dTex = "item/compass";
 			parent += 'generated",';
 			document.getElementById("unbreakableHide").hidden = "true";
+			document.getElementById("unbreakable").checked = "";
 			break;
 		default:
 			parent += 'generated",';
