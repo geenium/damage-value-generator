@@ -32,6 +32,7 @@
 <p class = 'bowPulling'>No. of pulling states to have for each bow durability (will always produce at least 1):<br>
 <input type = "text" value = '3' class = 'bowPulling' id = 'bowPullingNum'/></p>
 <p id = 'tridentThrown' hidden = 'true'><input type ='checkbox' id = 'tridentThrownCheck'/> Add a throwing model for each durability.</p>
+<p id = 'rodCast' hidden = 'true'><input type ='checkbox' id = 'rodCastCheck'/> Add a rod cast model for each durability.</p>
 <p>Default/placeholder model address:<br>
 <input type = 'text' id = 'address' value = 'item/bow'/></p>
 <p id = 'newTextureNames' hidden = 'true'><input type ='checkbox' id = 'newTextureNamesCheck'/> Use 1.13 texture names by default.</p>
