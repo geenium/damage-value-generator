@@ -64,6 +64,7 @@ var items = {
 		show: ["unbreakableHide", "rodCast"],
 		check: ["unbreakable", "rodCastCheck"],
 		extra: "cast",
+		extraCheck: "rodCastCheck",
 		replace: [/rod/, "rod_uncast"]
 	},
 	flint_and_steel: {
@@ -123,6 +124,7 @@ var items = {
 		show: ["unbreakableHide", "tridentThrown"],
 		check: ["unbreakable", "tridentThrownCheck"],
 		extra: "throwing",
+		extraCheck: "tridentThrownCheck",
 		noTexture: true
 	},
 	shears: {
@@ -172,6 +174,7 @@ var items = {
 		show: ["unbreakableHide", "shieldBlock"],
 		check: ["unbreakable", "shieldBlockCheck"],
 		extra: "blocking",
+		extraCheck: "shieldBlockCheck",
 		noTexture: true
 	},
 	stone_hoe: {
@@ -303,6 +306,11 @@ function generate() { //calculate all percentages
 		j = Math.round(((1 / maxDur) * i) * 10 ** 15) / 10 ** 15; // Limits the durability to 15 decimal places
 
 		var extra = (toolObj.extra) ? toolObj.extra : "";
+		var extraChecked = false;
+		
+		if (extra) {
+			extraChecked = document.getElementById(toolObj.extraCheck).checked;
+		}
 
 		if (j > 0) {
 			resultant += '{ "predicate": { ' + damaged + predicateKey + j + ' }, "model": "' + address + inc + '" },\n'; // Added spaces between the { } and predicate values
@@ -313,9 +321,9 @@ function generate() { //calculate all percentages
 					pullPercent = (1 / pullNum) * k;
 					resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
 				}
-			} else if (extra == "throwing") {
+			} else if (extra == "throwing" && extraChecked) {
 				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "throwing": 1 }, "model": "item/trident_throwing' + inc + '" },\n';
-			} else if (extra) {
+			} else if (extra && extraChecked) {
 				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "' + extra + '": 1 }, "model": "' + address + '_' + extra + inc + '" },\n';
 			}
 		} else {
@@ -327,9 +335,9 @@ function generate() { //calculate all percentages
 					pullPercent = (1 / pullNum) * k;
 					resultant += '{ "predicate": { "damage": ' + j + ', "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
 				}
-			} else if (extra == "throwing") {
+			} else if (extra == "throwing" && extraChecked) {
 				resultant += '{ "predicate": { "damage": ' + j + ', "throwing": 1 }, "model": "item/trident_throwing' + inc + '" },\n';
-			} else if (extra) {
+			} else if (extra && extraChecked) {
 				resultant += '{ "predicate": { "damage": ' + j + ', "' + extra + '": 1 }, "model": "' + address + '_' + extra + inc + '" },\n';
 			}
 		}
@@ -344,9 +352,9 @@ function generate() { //calculate all percentages
 				pullPercent = (1 / pullNum) * k;
 				resultant += '{ "predicate": { "damaged": 1, "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling_' + (k + 1) + '" },\n';
 			}
-		} else if (extra == "throwing") {
+		} else if (extra == "throwing" && extraChecked) {
 			resultant += '{ "predicate": { "damaged": 1, "throwing": 1 }, "model": "item/trident_throwing" },\n';
-		} else if (extra) {
+		} else if (extra && extraChecked) {
 			resultant += '{ "predicate": { "damaged": 1, "' + extra + '": 1 }, "model": "' + address + '_' + extra + '" },\n';
 		}
 	}
