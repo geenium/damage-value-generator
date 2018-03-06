@@ -12,7 +12,7 @@
 <option value="flint_and_steel">Flint &amp; Steel</option>
 <option value="golden_hoe">Golden Tool</option>
 <option value="iron_hoe">Iron Tool</option>
-<option value="trident">Trident</option>
+<option value="trident_in_hand">Trident</option>
 <option value="shears">Shears</option>
 <option value="shield">Shield</option>
 <option value="stone_hoe">Stone Tool</option>
