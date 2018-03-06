@@ -84,7 +84,7 @@ var items = {
 		show: ["unbreakableHide"],
 		check: ["unbreakable"]
 	},
-	trident: {
+	trident_in_hand: {
 		durability: 251,
 		parent: parents.entity,
 		display: `
@@ -313,6 +313,8 @@ function generate() { //calculate all percentages
 					pullPercent = (1 / pullNum) * k;
 					resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
 				}
+			} else if (extra == "throwing") {
+				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "throwing": 1 }, "model": "item/trident_throwing' + inc + '" },\n';
 			} else if (extra) {
 				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "' + extra + '": 1 }, "model": "' + address + '_' + extra + inc + '" },\n';
 			}
@@ -325,6 +327,8 @@ function generate() { //calculate all percentages
 					pullPercent = (1 / pullNum) * k;
 					resultant += '{ "predicate": { "damage": ' + j + ', "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
 				}
+			} else if (extra == "throwing") {
+				resultant += '{ "predicate": { "damage": ' + j + ', "throwing": 1 }, "model": "item/trident_throwing' + inc + '" },\n';
 			} else if (extra) {
 				resultant += '{ "predicate": { "damage": ' + j + ', "' + extra + '": 1 }, "model": "' + address + '_' + extra + inc + '" },\n';
 			}
@@ -340,6 +344,8 @@ function generate() { //calculate all percentages
 				pullPercent = (1 / pullNum) * k;
 				resultant += '{ "predicate": { "damaged": 1, "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling_' + (k + 1) + '" },\n';
 			}
+		} else if (extra == "throwing") {
+			resultant += '{ "predicate": { "damaged": 1, "throwing": 1 }, "model": "item/trident_throwing" },\n';
 		} else if (extra) {
 			resultant += '{ "predicate": { "damaged": 1, "' + extra + '": 1 }, "model": "' + address + '_' + extra + '" },\n';
 		}
