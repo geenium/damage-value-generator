@@ -74,7 +74,7 @@ var items = {
 		check: ["unbreakable"]
 	},
 	golden_hoe: {
-		durability: 32,
+		durability: 33,
 		parent: parents.handheld,
 		show: ["unbreakableHide", "newTextureNames"],
 		check: ["unbreakable"]
@@ -316,10 +316,10 @@ function generate() { //calculate all percentages
 			resultant += '{ "predicate": { ' + damaged + predicateKey + j + ' }, "model": "' + address + inc + '" },\n'; // Added spaces between the { } and predicate values
 			// Adds pulling predicates if the checkbox was checked
 			if (pull) {
-				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "pulling": 1 }, "model": item/bow_pulling' + inc + '_1" },\n';
+				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "pulling": 1 }, "model": item/bow_pulling' + inc + '_0" },\n';
 				for (var k = 1; k <= pullNum; k++) {
 					pullPercent = (1 / pullNum) * k;
-					resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
+					resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + k + '" },\n';
 				}
 			} else if (extra == "throwing" && extraChecked) {
 				resultant += '{ "predicate": { ' + damaged + predicateKey + j + ', "throwing": 1 }, "model": "item/trident_throwing' + inc + '" },\n';
@@ -330,10 +330,10 @@ function generate() { //calculate all percentages
 			resultant += '{ "predicate": { ' + predicateKey + j + ' }, "model": "' + address + inc + '" },\n'; // If damage = 0, damaged predicate is unnecessary
 			// Adds pulling predicates if the checkbox was checked
 			if (pull) {
-				resultant += '{ "predicate": { "damage": ' + j + ', "pulling": 1 }, "model": item/bow_pulling' + inc + '_1" },\n';
+				resultant += '{ "predicate": { "damage": ' + j + ', "pulling": 1 }, "model": item/bow_pulling' + inc + '_0" },\n';
 				for (var k = 1; k <= pullNum; k++) {
 					pullPercent = (1 / pullNum) * k;
-					resultant += '{ "predicate": { "damage": ' + j + ', "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + (k + 1) + '" },\n';
+					resultant += '{ "predicate": { "damage": ' + j + ', "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling' + inc + '_' + k + '" },\n';
 				}
 			} else if (extra == "throwing" && extraChecked) {
 				resultant += '{ "predicate": { "damage": ' + j + ', "throwing": 1 }, "model": "item/trident_throwing' + inc + '" },\n';
@@ -347,10 +347,10 @@ function generate() { //calculate all percentages
 		resultant += '{ "predicate": { "damaged": 1 }, "model": "' + address + '" },\n'; // Removed the unnecessary "damage": 0
 		// Adds pulling predicates if the checkbox was checked
 		if (pull) {
-			resultant += '{ "predicate": { "damaged": 1, "pulling": 1 }, "model": item/bow_pulling_1" },\n';
+			resultant += '{ "predicate": { "damaged": 1, "pulling": 1 }, "model": item/bow_pulling_0" },\n';
 			for (var k = 1; k <= pullNum; k++) {
 				pullPercent = (1 / pullNum) * k;
-				resultant += '{ "predicate": { "damaged": 1, "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling_' + (k + 1) + '" },\n';
+				resultant += '{ "predicate": { "damaged": 1, "pulling": 1, "pull": ' + pullPercent + ' }, "model": item/bow_pulling_' + k + '" },\n';
 			}
 		} else if (extra == "throwing" && extraChecked) {
 			resultant += '{ "predicate": { "damaged": 1, "throwing": 1 }, "model": "item/trident_throwing" },\n';
