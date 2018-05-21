@@ -61,7 +61,7 @@ var items = {
 	fishing_rod: {
 		durability: 65,
 		parent: parents.rod,
-		show: ["unbreakableHide", "rodCast"],
+		show: ["unbreakableHide", "rodCast", "newTextureNames"],
 		check: ["unbreakable", "rodCastCheck"],
 		extra: "cast",
 		extraCheck: "rodCastCheck",
@@ -77,7 +77,8 @@ var items = {
 		durability: 33,
 		parent: parents.handheld,
 		show: ["unbreakableHide", "newTextureNames"],
-		check: ["unbreakable"]
+		check: ["unbreakable"],
+		replace: [/en/, ""]
 	},
 	iron_hoe: {
 		durability: 251,
@@ -187,7 +188,8 @@ var items = {
 		durability: 60,
 		parent: parents.handheld,
 		show: ["unbreakableHide", "newTextureNames"],
-		check: ["unbreakable"]
+		check: ["unbreakable"],
+		replace: [/en/, ""]
 	},
 	clock: {
 		durability: 64,
@@ -367,11 +369,8 @@ function generate() { //calculate all percentages
 	if (document.getElementById("model").checked) {
 		address = address.replace(/item/, "items"); // Changed default texture path from item to items.
 
-		if (!document.getElementById("newTextureNamesCheck").checked) {
-			address = address.replace(/en_/, "_"); // Changes texture path from golden_hoe to gold_hoe and wooden_hoe to wood_hoe if new textures isn't checked.
-		}
-
-		if (toolObj.replace) {
+		// Changes texture path if new textures isn't checked.
+		if (toolObj.replace && !document.getElementById("newTextureNamesCheck").checked) {
 			address = address.replace(...toolObj.replace);
 		}
 
