@@ -255,10 +255,6 @@ function durabilityInfo() {
 		});
 	}
 
-	// If there isn't a display in the tool object, then display needs to be reset
-	// Otherwise display value would carry onto tools which don't need it
-	display = (toolObj.display) ? toolObj.display : "";
-
 	dTex = "item/" + tool;
 	document.getElementById("address").value = dTex;
 }
@@ -271,6 +267,10 @@ function generate() { //calculate all percentages
 
 	tool = document.getElementById("tool").value;
 	toolObj = items[tool];
+
+	// If there isn't a display in the tool object, then display needs to be reset
+	// Otherwise display value would carry onto tools which don't need it
+	display = (toolObj.display) ? toolObj.display : "";
 
 	maxDur = toolObj.durability;
 	maxModels = document.getElementById("modelLimit").value; // Max no of models to create
