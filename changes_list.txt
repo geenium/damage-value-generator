@@ -1,4 +1,5 @@
 Changed default texture path from item to items
+This can now be toggled due to 1.13 using 'item' texture folder not 'items'
 
 Changed bow default model to bow - from bow_standby
 Changed fishing rod default model to fishing_rod - from fishing_rod_uncast
