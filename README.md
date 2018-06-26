@@ -34,7 +34,7 @@
 <p id="rodCast" hidden="true"><input type ="checkbox" id="rodCastCheck"/> Add a rod cast model for each durability.</p>
 <p>Default/placeholder model address:<br>
 <input type="text" id="address" value="item/bow"/></p>
-<p id="newTextureNames" hidden="true"><input type ="checkbox" id="newTextureNamesCheck"/> Use 1.13 texture names by default.</p>
+<p id="newTextureNames"><input type ="checkbox" id="newTextureNamesCheck" checked="checked"/> Use 1.13 texture/folder names by default.</p>
 <p>Max no. of models to produce (excludes 0 damage):<br>
 <input type="text" id="modelLimit" value="384"/></p>
 <p><input type="button" value="Generate Code" id="generate" onclick="generate()"/></p>
