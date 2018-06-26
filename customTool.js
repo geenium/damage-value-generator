@@ -61,7 +61,7 @@ var items = {
 	fishing_rod: {
 		durability: 65,
 		parent: parents.rod,
-		show: ["unbreakableHide", "rodCast", "newTextureNames"],
+		show: ["unbreakableHide", "rodCast"],
 		check: ["unbreakable", "rodCastCheck"],
 		extra: "cast",
 		extraCheck: "rodCastCheck",
@@ -76,7 +76,7 @@ var items = {
 	golden_hoe: {
 		durability: 33,
 		parent: parents.handheld,
-		show: ["unbreakableHide", "newTextureNames"],
+		show: ["unbreakableHide"],
 		check: ["unbreakable"],
 		replace: [/en/, ""]
 	},
@@ -187,7 +187,7 @@ var items = {
 	wooden_hoe: {
 		durability: 60,
 		parent: parents.handheld,
-		show: ["unbreakableHide", "newTextureNames"],
+		show: ["unbreakableHide"],
 		check: ["unbreakable"],
 		replace: [/en/, ""]
 	},
@@ -213,9 +213,9 @@ var items = {
 };
 
 // All items to hide initially
-var toHide = ["unbreakableHide", "elytraBroken", "shieldBlock", "newTextureNames", "tridentThrown", "rodCast", "bowPulling"];
+var toHide = ["unbreakableHide", "elytraBroken", "shieldBlock", "tridentThrown", "rodCast", "bowPulling"];
 // All checkboxes are unticked, then re-ticked when needed
-var toUncheck = ["unbreakable", "elytraBrokenCheck", "shieldBlockCheck", "newTextureNamesCheck", "tridentThrownCheck", "rodCastCheck", "bowPullingCheck"];
+var toUncheck = ["unbreakable", "elytraBrokenCheck", "shieldBlockCheck", "tridentThrownCheck", "rodCastCheck", "bowPullingCheck"];
 
 // handle a selection change for tool type
 function durabilityInfo() {
@@ -367,7 +367,9 @@ function generate() { //calculate all percentages
 
 	resultant = resultant.substring(0, resultant.length - 2); //remove the last comma from the string.
 	if (document.getElementById("model").checked) {
-		address = address.replace(/item/, "items"); // Changed default texture path from item to items.
+		if (!document.getElementById("newTextureNamesCheck").checked) {
+			address = address.replace(/item/, "items"); // Changed default texture path from item to items.
+		}
 
 		// Changes texture path if new textures isn't checked.
 		if (toolObj.replace && !document.getElementById("newTextureNamesCheck").checked) {
