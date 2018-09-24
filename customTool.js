@@ -192,13 +192,13 @@ var items = {
 		replace: [/en/, ""]
 	},
 	clock: {
-		durability: 63,
+		durability: 64,
 		parent: parents.generated,
 		durabilityMsg: 'How many clock models do you want to have?',
 		predicate: '"time": '
 	},
 	compass: {
-		durability: 31,
+		durability: 32,
 		parent: parents.generated,
 		durabilityMsg: 'How many compass models do you want to have?',
 		predicate: '"angle": '
@@ -254,11 +254,12 @@ function toolInfo() {
 
 // Changes the durability info when tools are changed or the 1.13 checkbox is changed
 function durabilityInfo() {
-	var toolObj = items[document.getElementById("tool").value] // Gets the tool object from the dropdown value
+	var tool = document.getElementById("tool").value;
+	var toolObj = items[tool];
 	var durability = toolObj.durability;
 
 	// If the models are not to be used in 1.13 then the durability needs to be increased by 1
-	if (!document.getElementById("ver13Check").checked) durability++;
+	if (!document.getElementById("ver13Check").checked && !(tool == "compass" || tool == "clock")) durability++;
 
 	if (toolObj.durabilityMsg) { // custom durability.
 		document.getElementById("durabilityInfo").innerHTML = toolObj.durabilityMsg + '<br><input type = "text" value = "' + durability + '" class = "textLine" id = "customDur"/>';
