@@ -11,7 +11,7 @@ var parents = {
 // This makes it much easier to add tools in the future
 var items = {
 	bow: {
-		durability: 385,
+		durability: 384,
 		parent: parents.generated,
 		display: `
 	"display": {
@@ -41,25 +41,25 @@ var items = {
 		replace: [/bow/, "bow_standby"]
 	},
 	carrot_on_a_stick: {
-		durability: 26,
+		durability: 25,
 		parent: parents.rod,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"]
 	},
 	diamond_hoe: {
-		durability: 1562,
+		durability: 1561,
 		parent: parents.handheld,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"]
 	},
 	elytra: {
-		durability: 433,
+		durability: 432,
 		parent: parents.generated,
 		show: ["unbreakableHide", "elytraBroken"],
 		check: ["unbreakable"]
 	},
 	fishing_rod: {
-		durability: 65,
+		durability: 64,
 		parent: parents.rod,
 		show: ["unbreakableHide", "rodCast"],
 		check: ["unbreakable", "rodCastCheck"],
@@ -68,26 +68,26 @@ var items = {
 		replace: [/rod/, "rod_uncast"]
 	},
 	flint_and_steel: {
-		durability: 65,
+		durability: 64,
 		parent: parents.generated,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"]
 	},
 	golden_hoe: {
-		durability: 33,
+		durability: 32,
 		parent: parents.handheld,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"],
 		replace: [/en/, ""]
 	},
 	iron_hoe: {
-		durability: 251,
+		durability: 250,
 		parent: parents.handheld,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"]
 	},
 	trident_in_hand: {
-		durability: 251,
+		durability: 250,
 		parent: parents.entity,
 		display: `
 	"display": {
@@ -129,13 +129,13 @@ var items = {
 		noTexture: true
 	},
 	shears: {
-		durability: 238,
+		durability: 237,
 		parent: parents.generated,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"]
 	},
 	shield: {
-		durability: 337,
+		durability: 336,
 		parent: parents.entity,
 		display: `
 	"display": {
@@ -179,32 +179,32 @@ var items = {
 		noTexture: true
 	},
 	stone_hoe: {
-		durability: 132,
+		durability: 131,
 		parent: parents.handheld,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"]
 	},
 	wooden_hoe: {
-		durability: 60,
+		durability: 59,
 		parent: parents.handheld,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"],
 		replace: [/en/, ""]
 	},
 	clock: {
-		durability: 64,
+		durability: 63,
 		parent: parents.generated,
 		durabilityMsg: 'How many clock models do you want to have?',
 		predicate: '"time": '
 	},
 	compass: {
-		durability: 32,
+		durability: 31,
 		parent: parents.generated,
 		durabilityMsg: 'How many compass models do you want to have?',
 		predicate: '"angle": '
 	},
 	other: {
-		durability: 1562,
+		durability: 1561,
 		parent: parents.generated,
 		show: ["unbreakableHide"],
 		check: ["unbreakable"],
@@ -218,18 +218,9 @@ var toHide = ["unbreakableHide", "elytraBroken", "shieldBlock", "tridentThrown",
 var toUncheck = ["unbreakable", "elytraBrokenCheck", "shieldBlockCheck", "tridentThrownCheck", "rodCastCheck", "bowPullingCheck"];
 
 // handle a selection change for tool type
-function durabilityInfo() {
+function toolInfo() {
 	var tool = document.getElementById("tool").value; // get the tool from the dropdown.
 	var toolObj = items[tool] // Gets the tool object from the dropdown value
-	var durability = toolObj.durability;
-
-	if (toolObj.durabilityMsg) { // custom durability.
-		document.getElementById("durabilityInfo").innerHTML = toolObj.durabilityMsg + '<br><input type = "text" value = "' + durability + '" class = "textLine" id = "customDur"/>';
-	} else { //existing tool
-		document.getElementById("durabilityInfo").innerHTML = 'Your selected tool has a durability of ' + durability + '.';
-	}
-
-	document.getElementById("modelLimit").value = durability - 1;
 
 	// Hides all elements ready to be shown for certain options
 	toHide.forEach(function(element) {
@@ -257,6 +248,25 @@ function durabilityInfo() {
 
 	dTex = "item/" + tool;
 	document.getElementById("address").value = dTex;
+
+	durabilityInfo();
+}
+
+// Changes the durability info when tools are changed or the 1.13 checkbox is changed
+function durabilityInfo() {
+	var toolObj = items[document.getElementById("tool").value] // Gets the tool object from the dropdown value
+	var durability = toolObj.durability;
+
+	// If the models are not to be used in 1.13 then the durability needs to be increased by 1
+	if (!document.getElementById("ver13Check").checked) durability++;
+
+	if (toolObj.durabilityMsg) { // custom durability.
+		document.getElementById("durabilityInfo").innerHTML = toolObj.durabilityMsg + '<br><input type = "text" value = "' + durability + '" class = "textLine" id = "customDur"/>';
+	} else { //existing tool
+		document.getElementById("durabilityInfo").innerHTML = 'Your selected tool has a durability of ' + durability + '.';
+	}
+
+	document.getElementById("modelLimit").value = durability - 1;
 }
 
 function generate() { //calculate all percentages
@@ -272,7 +282,11 @@ function generate() { //calculate all percentages
 	// Otherwise display value would carry onto tools which don't need it
 	display = (toolObj.display) ? toolObj.display : "";
 
+	var ver13 = document.getElementById("ver13Check").checked; // Gets whether the models are to be used in 1.13.
+
 	maxDur = toolObj.durability;
+	if (!ver13) maxDur++;
+
 	maxModels = document.getElementById("modelLimit").value; // Max no of models to create
 	address = document.getElementById("address").value; //default model address
 	predicateKey = '"damage": '; // Sets the default predicate to "damage"
@@ -367,12 +381,12 @@ function generate() { //calculate all percentages
 
 	resultant = resultant.substring(0, resultant.length - 2); //remove the last comma from the string.
 	if (document.getElementById("model").checked) {
-		if (!document.getElementById("newTextureNamesCheck").checked) {
+		if (!ver13) {
 			address = address.replace(/item/, "items"); // Changed default texture path from item to items.
 		}
 
-		// Changes texture path if new textures isn't checked.
-		if (toolObj.replace && !document.getElementById("newTextureNamesCheck").checked) {
+		// Changes texture path if models are to be used in 1.13.
+		if (toolObj.replace && !ver13) {
 			address = address.replace(...toolObj.replace);
 		}
 
