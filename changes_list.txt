@@ -33,3 +33,5 @@ Added optional cast predicate for fishing rod
 
 Added clock option
 Added compass option
+
+Add ability to download json
