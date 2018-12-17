@@ -45,7 +45,7 @@ layout: default
         <p id="ver13"><input type ="checkbox" id="ver13Check" checked="checked" onchange="durabilityInfo()"/> Use 1.13 values, ie durability, texture/folder names by default.</p>
         <p>Max no. of models to produce (excludes 0 damage):<br>
         <input type="text" id="modelLimit" value="384"/></p>
-        <p><input type="button" value="Generate Code" id="generate" onclick="generate()"/></p>
+        <p><input type="button" value="Generate Code" id="generate" onclick="generate()"/> <input type="button" value="Download JSON" id="download" disabled onclick="downloadJson()"/></p>
         <textarea readonly id="result" class="hidden"></textarea>
     </body>
 </html>
