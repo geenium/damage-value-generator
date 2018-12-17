@@ -401,5 +401,21 @@ function generate() { //calculate all percentages
 	}
 
 	document.getElementById("result").innerHTML = resultant;
-	document.getElementById("generate").value = "Generate Code";
+	document.getElementById("generate").value = "Generate Code"
+
+	document.getElementById("download").disabled = false;
+}
+
+function downloadJson() {
+    var downloadLink = document.createElement("a");
+    downloadLink.download = document.getElementById("address").value.split("/")[1] + ".json";
+    downloadLink.href = window.URL.createObjectURL(
+		new Blob([document.getElementById("result").value], {type:"text/json"})
+	);
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+ 
+	downloadLink.click();
+	
+	document.body.removeChild(downloadLink.target);
 }
