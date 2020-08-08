@@ -86,6 +86,12 @@ var items = {
 		show: ["unbreakableHide"],
 		check: ["unbreakable"]
 	},
+	netherite_hoe: {
+		durability: 2031,
+		parent: parents.handheld,
+		show: ["unbreakableHide"],
+		check: ["unbreakable"]
+	},
 	trident_in_hand: {
 		durability: 250,
 		parent: parents.entity,
